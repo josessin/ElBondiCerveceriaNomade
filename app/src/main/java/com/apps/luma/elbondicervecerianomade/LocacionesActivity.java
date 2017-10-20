@@ -26,7 +26,6 @@ public class LocacionesActivity extends AppCompatActivity implements FeedTaskLis
             //request permission from user if the app hasn't got the required permission
             ActivityCompat.requestPermissions(this, new String[]{INTERNET}, 10);
 
-            return;
         } else {
             //Desarrollo servidor
             //String url = "http://el-bondi-server.firebaseapp.com/app/loc";
@@ -48,7 +47,6 @@ public class LocacionesActivity extends AppCompatActivity implements FeedTaskLis
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
             pedirDatos();
         } else {
             //TODO: Manejar permisos not granted

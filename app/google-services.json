@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1034688114364",
+    "firebase_url": "https://el-bondi-server.firebaseio.com",
+    "project_id": "el-bondi-server",
+    "storage_bucket": "el-bondi-server.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034688114364:android:5ee87586071c2e79",
+        "android_client_info": {
+          "package_name": "com.apps.luma.elbondicervecerianomade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034688114364-jthg6i12fksvin6743fqu3oss5lt6m4a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.luma.elbondicervecerianomade",
+            "certificate_hash": "7f621653c9b32f316ee0e58de4f0e637d5b68404"
+          }
+        },
+        {
+          "client_id": "1034688114364-or1rskhcs61lpcdkrqlnkjb4cmd28ela.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBdb-6oiLwEoXCVh5FX8iG-uScLafJ__o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034688114364-or1rskhcs61lpcdkrqlnkjb4cmd28ela.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

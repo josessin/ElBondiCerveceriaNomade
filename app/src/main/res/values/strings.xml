@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">El Bondi Cerveceria Nomade</string>
+    <string name="facebook_application_id" translatable="false">180991219115678</string>
+    <string name="btn_donde">Donde Estamos</string>
+    <string name="btn_productos">Nuestras Cervezas</string>
+    <string name="action_try_again">Intentar Nuevamente</string>
+    <string name="sign_in_cancelled">Sign-in cancelado</string>
+    <string name="no_internet_connection">Sin acceso a internet</string>
+    <string name="unknown_error">Error de la applicacion</string>
+    <string name="unknown_sign_in_response">Respuesta desconocida</string>
+    <string name="sign_in_button">Ingresar</string>
+    <!-- Facebook Application ID, prefixed by 'fb'.  Enables Chrome Custom tabs. -->
+    <!--
+    <string name="facebook_login_protocol_scheme" translatable="false">fb180991219115678</string>
+    -->
+
+</resources>

@@ -15,7 +15,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by Usuario on 18/10/2017.
+ * Created by Jrepetto on 27/10/2017.
  */
 
 public class FeedTask extends AsyncTask<String, Void, String> {
@@ -36,6 +36,7 @@ public class FeedTask extends AsyncTask<String, Void, String> {
             listeners.remove(newListener);
         }
     }
+
 
     @Override
     public String doInBackground(String... params) {

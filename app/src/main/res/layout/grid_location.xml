@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:calendar="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/direccionTextV"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:id="@+id/notaTextV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/direccionTextV"
+            android:layout_above="@+id/calendarV"
+            android:layout_toStartOf="@+id/gpsbtn" />
+
+
+        <CalendarView
+            android:id="@+id/calendarV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            />
+
+        <Button
+            android:id="@+id/gpsbtn"
+            android:drawableBottom="@drawable/gpsclickyellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_below="@+id/direccionTextV"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="38dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

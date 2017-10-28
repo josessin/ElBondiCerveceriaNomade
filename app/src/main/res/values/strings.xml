@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">El Bondi Cerveceria Nomade</string>
+    <string name="app_name">El Bondi</string>
+    <string name="locations_url">http://el-bondi-server.firebaseapp.com/app/loc?cantidad=15</string>
+    <string name="products_url">http://el-bondi-server.firebaseapp.com/app/prod</string>
+    <string name="actionBar_title">   CERVECERIA NOMADE</string>
     <string name="facebook_application_id" translatable="false">180991219115678</string>
     <string name="btn_donde">Donde Estamos</string>
     <string name="btn_productos">Nuestras Cervezas</string>
@@ -9,6 +12,7 @@
     <string name="unknown_error">Error de la applicacion</string>
     <string name="unknown_sign_in_response">Respuesta desconocida</string>
     <string name="sign_in_button">Ingresar</string>
+    <string name="conecting">conectando</string>
     <!-- Facebook Application ID, prefixed by 'fb'.  Enables Chrome Custom tabs. -->
     <!--
     <string name="facebook_login_protocol_scheme" translatable="false">fb180991219115678</string>

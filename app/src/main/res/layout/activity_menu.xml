@@ -1,42 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.apps.luma.elbondicervecerianomade.MenuActivity">
 
-    <Button
-        android:id="@+id/btn_donde"
-        android:layout_width="@dimen/btn_menu_with"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="182dp"
-        android:backgroundTint="@color/darkOrange"
-        android:drawableLeft="@drawable/question"
-        android:text="@string/btn_donde"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/btn_productos"
-        android:layout_width="@dimen/btn_menu_with"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btn_donde"
-        android:layout_below="@+id/btn_donde"
-        android:layout_marginTop="11dp"
-        android:backgroundTint="@color/errorColor"
-        android:drawableLeft="@drawable/beer"
-        android:text="@string/btn_productos"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
-
-    <LinearLayout
-        android:id="@+id/snack_position"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/paginas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/darkOrange"
-        android:orientation="horizontal"></LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tabs"
+        />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/royalBlue"
+        android:layout_alignParentStart="true">
+
+</android.support.design.widget.TabLayout>
+
 </RelativeLayout>
+

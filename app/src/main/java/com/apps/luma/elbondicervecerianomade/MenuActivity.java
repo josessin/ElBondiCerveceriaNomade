@@ -117,22 +117,24 @@ public class MenuActivity extends AppCompatActivity {
 
     private void hardCodeoPaginas() throws ParseException, IOException { //TODO: PARA PRUEBAS
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        String sortFecha = "1510272000000";
+        String sortFecha = "1510369200000";
         Long millisecond = Long.parseLong(sortFecha);
         Calendar cal = Calendar.getInstance();
         String dateString = formatter.format(new Date(millisecond));
         cal.setTime(formatter.parse(dateString));
         Locacion loc1 = new Locacion("6a65465ds4a654ads", "CASA LALALA", cal, "Hola jose mira como se ve esto \n va quedando el diseño ;) ", "2sdas654asd654");
-        sortFecha = "1510358400000";
-        millisecond = Long.parseLong(sortFecha);
-        dateString = formatter.format(new Date(millisecond));
-        cal.setTime(formatter.parse(dateString));
-        Locacion loc2 = new Locacion("6a65465ds4saddads", "San Martin 3408", cal, "NOTA", "2sdas654asd554");
-        sortFecha = "1510531200000";
-        millisecond = Long.parseLong(sortFecha);
-        dateString = formatter.format(new Date(millisecond));
-        cal.setTime(formatter.parse(dateString));
-        Locacion loc3 = new Locacion("6a54465ds4saddads", "MI CASA", cal, "NOTA", "2sdas644asd554");
+        String sortFecha2 = "1510455600000";
+        Long millisecond2 = Long.parseLong(sortFecha2);
+        Calendar cal2 = Calendar.getInstance();
+        String dateString2 = formatter.format(new Date(millisecond2));
+        cal2.setTime(formatter.parse(dateString2));
+        Locacion loc2 = new Locacion("6a65465ds4saddads", "San Martin 3408", cal2, "NOTA", "2sdas654asd554");
+        String sortFecha3 = "1510714800000";
+        Long millisecond3 = Long.parseLong(sortFecha3);
+        Calendar cal3 = Calendar.getInstance();
+        String dateString3 = formatter.format(new Date(millisecond3));
+        cal3.setTime(formatter.parse(dateString3));
+        Locacion loc3 = new Locacion("6a54465ds4saddads", "MI CASA", cal3, "NOTA", "2sdas644asd554");
         Locacion[] locacionesHard = {loc1, loc2, loc3};
         this.locaciones = locacionesHard;
         Producto prod1 = new Producto("CERVEZA CACA", R.drawable.beergreen, "DESCRIPCION", "$555");

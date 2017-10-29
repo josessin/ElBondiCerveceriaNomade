@@ -23,6 +23,7 @@ public class LocalitationsAdapter extends BaseAdapter {
     private Locacion[] locaciones;
     private TextView setdireccion;
     private TextView setnota;
+    private CalendarView calendarView;
 
     public LocalitationsAdapter(Context context, Locacion[] locaciones)
     {
@@ -59,8 +60,10 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.setdireccion = direccion;
         Button gpsbtn = (Button) convertView.findViewById(R.id.gpsbtn);
         CalendarView calendar = (CalendarView) convertView.findViewById(R.id.calendarV);
-        calendar.setMinDate(this.locaciones[0].getFecha().getTimeInMillis());
-        calendar.setMaxDate(this.locaciones[0].getFecha().getTimeInMillis() + (this.locaciones[0].getFecha().DAY_OF_MONTH + 15));
+        this.setlocacion = this.locaciones[0];
+        this.calendarView = calendar;
+        this.calendarView.setMinDate(this.setlocacion.getFecha().getTimeInMillis() - 86400000);
+        this.calendarView.setMaxDate(this.setlocacion.getFecha().getTimeInMillis() + 1123200000);
         if(this.setlocacion != null) {
             this.setdireccion.setText(this.setlocacion.getDireccion());
             this.setnota.setText(this.setlocacion.getNota());

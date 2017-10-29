@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
 import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentLocalitations;
 import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentProducts;
 import com.apps.luma.elbondicervecerianomade.http.Data;
@@ -17,15 +16,18 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class MenuActivity extends AppCompatActivity{
@@ -51,6 +53,8 @@ public class MenuActivity extends AppCompatActivity{
         try {
             hardCodeoPaginas(); //PARA PRUEBAS
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         //       data.pedidoDatos(Tipo.LOCACION);//BLOQUEADO PARA PRUEBAS
@@ -113,14 +117,23 @@ public class MenuActivity extends AppCompatActivity{
         //this.activityLocaciones = new LocacionesActivity(info);
     }
 
-    private void hardCodeoPaginas() throws ParseException { //PARA PRUEBAS
+    private void hardCodeoPaginas() throws ParseException, IOException { //PARA PRUEBAS
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String sortFecha = "1509235200000";
+        Long millisecond = Long.parseLong(sortFecha);
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.CANADA);
-        cal.setTime(sdf.parse("Mon Oct 28 16:02:37 GMT 2017"));
+        String dateString = formatter.format(new Date(millisecond));
+        cal.setTime(formatter.parse(dateString));
         Locacion loc1 = new Locacion("6a65465ds4a654ads","San Martin 3407",cal,"NOTA","2sdas654asd654");
-        cal.setTime(sdf.parse("Mon Oct 29 16:02:37 GMT 2017"));
+        sortFecha = "1509321600000";
+        millisecond = Long.parseLong(sortFecha);
+        dateString = formatter.format(new Date(millisecond));
+        cal.setTime(formatter.parse(dateString));
         Locacion loc2 = new Locacion("6a65465ds4saddads","San Martin 3408",cal,"NOTA","2sdas654asd554");
-        cal.setTime(sdf.parse("Mon Oct 30 16:02:37 GMT 2017"));
+        sortFecha = "1509408000000";
+        millisecond = Long.parseLong(sortFecha);
+        dateString = formatter.format(new Date(millisecond));
+        cal.setTime(formatter.parse(dateString));
         Locacion loc3 = new Locacion("6a54465ds4saddads","MI CASA",cal,"NOTA","2sdas644asd554");
         Locacion[] locacionesHard = {loc1, loc2, loc3};
         locaciones = locacionesHard;

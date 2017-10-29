@@ -45,8 +45,7 @@ public class MenuActivity extends AppCompatActivity{
         auth = FirebaseAuth.getInstance();
         tabs = (TabLayout) findViewById(R.id.tabs);
         paginas = (ViewPager) findViewById(R.id.paginas);
-        tabs.addTab(tabs.newTab().setIcon(R.drawable.gpswhite));
-        tabs.addTab(tabs.newTab().setIcon(R.drawable.beerwhite));
+
         //Data data = new Data(this);//BLOQUEADO PARA PRUEBAS
 
         try {
@@ -61,8 +60,8 @@ public class MenuActivity extends AppCompatActivity{
 
         private void setupViewPager(ViewPager viewPager) {
             SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-            adapter.addFragment(GridFragmentLocalitations.newInstance(1), ("local"));
-            adapter.addFragment(GridFragmentProducts.newInstance(2), ("product"));
+            adapter.addFragment(GridFragmentLocalitations.newInstance(1), getResources().getDrawable(R.drawable.gps,this.getTheme()));
+            adapter.addFragment(GridFragmentProducts.newInstance(2), getResources().getDrawable(R.drawable.beer,this.getTheme()));
             viewPager.setAdapter(adapter);
         }
 

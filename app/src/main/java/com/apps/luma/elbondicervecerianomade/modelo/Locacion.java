@@ -14,7 +14,14 @@ public class Locacion {
     @JsonProperty ("fecha") private Calendar fecha;
     @JsonProperty("nota") private String nota;
     @JsonProperty("sortFecha") private String sortFecha;
-    private static Locacion[] locaciones;
+
+    public Locacion(String uid, String direccion, Calendar fecha, String nota, String sortFecha) {
+        this.uid = uid;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.nota = nota;
+        this.sortFecha = sortFecha;
+    }
 
     public Locacion()
     {
@@ -35,15 +42,6 @@ public class Locacion {
 
     public void setSortFecha(String sortFecha) {
         this.sortFecha = sortFecha;
-    }
-
-    public static void setLocaciones(Locacion[] locaciones) {
-        Locacion.locaciones = locaciones;
-    }
-
-    public Locacion(Locacion[] locaciones)
-    {
-        this.locaciones = locaciones;
     }
 
     public String getDireccion() {
@@ -74,9 +72,4 @@ public class Locacion {
         String[] arrayFecha = fechatxt.split("-");
         this.fecha.set(Integer.parseInt(arrayFecha[0]),Integer.parseInt(arrayFecha[1]),Integer.parseInt(arrayFecha[2]));
     }*/
-    public static Locacion[] getLocaciones()
-    {
-
-        return locaciones;
-    }
 }

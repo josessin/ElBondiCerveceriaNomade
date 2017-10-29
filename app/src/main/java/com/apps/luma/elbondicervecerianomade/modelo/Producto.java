@@ -8,10 +8,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Producto {
     @JsonProperty("nombre") private String nombre;
-    @JsonProperty("imgUrl") private String imgUrl;
+    @JsonProperty("imgUrl") private int imgUrl;
     @JsonProperty("descripcion") private String descripcion;
     @JsonProperty("precio") private String precio;
-    private static Producto[] productos;
+
+
+    public Producto(String nombre, int imgUrl, String descripcion, String precio) {
+        this.nombre = nombre;
+        this.imgUrl = imgUrl;
+        this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
     public Producto()
     {
 
@@ -25,11 +33,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getImgUrl() {
+    public int getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
+    public void setImgUrl(int imgUrl) {
         this.imgUrl = imgUrl;
     }
 
@@ -47,15 +55,6 @@ public class Producto {
 
     public void setPrecio(String precio) {
         this.precio = precio;
-    }
-
-    public static Producto[] getProductos()
-    {
-        return productos;
-    }
-
-    public void setProductos(Producto[] productos) {
-        this.productos = productos;
     }
 
 }

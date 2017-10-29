@@ -23,6 +23,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class MenuActivity extends AppCompatActivity{
 
@@ -31,7 +35,7 @@ public class MenuActivity extends AppCompatActivity{
     private TabLayout tabs;
     private Locacion locacion;
     private Producto producto;
-    private Producto[] productos;
+    private static Producto[] productos;
     private static Locacion[] locaciones;
 
     @Override
@@ -43,9 +47,15 @@ public class MenuActivity extends AppCompatActivity{
         paginas = (ViewPager) findViewById(R.id.paginas);
         tabs.addTab(tabs.newTab().setIcon(R.drawable.gpswhite));
         tabs.addTab(tabs.newTab().setIcon(R.drawable.beerwhite));
-        Data data = new Data(this);
-        data.pedidoDatos(Tipo.LOCACION);
-        data.pedidoDatos(Tipo.PRODUCTOS);
+        //Data data = new Data(this);//BLOQUEADO PARA PRUEBAS
+
+        try {
+            hardCodeoPaginas(); //PARA PRUEBAS
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //       data.pedidoDatos(Tipo.LOCACION);//BLOQUEADO PARA PRUEBAS
+ //       data.pedidoDatos(Tipo.PRODUCTOS);//BLOQUEADO PARA PRUEBAS
 
     }
 
@@ -67,9 +77,9 @@ public class MenuActivity extends AppCompatActivity{
             JSONArray arrayProd = objProd.getJSONArray("productos");
 
                 this.locaciones = mapper.readValue(arrayLoca.toString(), Locacion[].class);
-                this.locacion.setLocaciones(locaciones);
+                setLocaciones(locaciones);
                 this.productos = mapper.readValue(arrayProd.toString(), Producto[].class);
-                this.producto.setProductos(productos);
+                setProductos(productos);
                 int i = 0;
                 for(Locacion locacion : locaciones) {
                     i++;
@@ -104,6 +114,42 @@ public class MenuActivity extends AppCompatActivity{
         //this.activityLocaciones = new LocacionesActivity(info);
     }
 
+    private void hardCodeoPaginas() throws ParseException { //PARA PRUEBAS
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.CANADA);
+        cal.setTime(sdf.parse("Mon Oct 28 16:02:37 GMT 2017"));
+        Locacion loc1 = new Locacion("6a65465ds4a654ads","San Martin 3407",cal,"NOTA","2sdas654asd654");
+        cal.setTime(sdf.parse("Mon Oct 29 16:02:37 GMT 2017"));
+        Locacion loc2 = new Locacion("6a65465ds4saddads","San Martin 3408",cal,"NOTA","2sdas654asd554");
+        cal.setTime(sdf.parse("Mon Oct 30 16:02:37 GMT 2017"));
+        Locacion loc3 = new Locacion("6a54465ds4saddads","MI CASA",cal,"NOTA","2sdas644asd554");
+        Locacion[] locacionesHard = {loc1, loc2, loc3};
+        locaciones = locacionesHard;
+        Producto prod1 = new Producto("CERVEZA CACA",R.drawable.beergreen,"DESCRIPCION","$555");
+        Producto prod2 = new Producto("CERVEZA IPA",R.drawable.beeryellow,"DESCRIPCION2","$555");
+        Producto prod3 = new Producto("CERVEZA DOBLE",R.drawable.gpsclickgreen,"DESCRIPCION3","$555");
+        Producto prod4 = new Producto("CERVEZA MAMA",R.drawable.gpsred,"DESCRIPCION4","$555");
+        Producto prod5 = new Producto("CERVEZA MIA",R.drawable.gpsclickred,"DESCRIPCION5","$555");
+        Producto prod6 = new Producto("CERVEZA SAAA",R.drawable.gpsclickgreen,"DESCRIPCION6","$555");
+        Producto prod7 = new Producto("CERVEZA NO SE",R.drawable.beergreen,"DESCRIPCION7","$555");
+        Producto prod8 = new Producto("CERVEZA OJALA FUNQUE",R.drawable.beer,"DESCRIPCION8","$555");
+        Producto[] productosHard = {prod1,prod2,prod3,prod4,prod5,prod6,prod7,prod8};
+        productos = productosHard;
+        setupViewPager(paginas);
+        tabs.setupWithViewPager(paginas);
+    }
+    private static void setLocaciones(Locacion[] nana){
+        locaciones = nana;
+    }
+    private static void setProductos(Producto[] nana){
+        productos = nana;
+    }
+    public static Locacion[] getLocaciones(){
+        return locaciones;
+    }
+    public static Producto[] getProductos(){
+        return productos;
+    }
     public void signOut() {
         AuthUI.getInstance().signOut(this);
     }

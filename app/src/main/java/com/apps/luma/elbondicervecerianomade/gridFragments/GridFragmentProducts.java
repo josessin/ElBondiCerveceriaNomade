@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.apps.luma.elbondicervecerianomade.MenuActivity;
 import com.apps.luma.elbondicervecerianomade.R;
 import com.apps.luma.elbondicervecerianomade.adapters.LocalitationsAdapter;
 import com.apps.luma.elbondicervecerianomade.adapters.ProductaAdapter;
@@ -19,7 +20,6 @@ import com.apps.luma.elbondicervecerianomade.modelo.Producto;
 
 public class GridFragmentProducts extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
-
     public static GridFragmentProducts newInstance(int sectionNumber) {
         GridFragmentProducts fragment = new GridFragmentProducts();
         Bundle args = new Bundle();
@@ -47,10 +47,10 @@ public class GridFragmentProducts extends Fragment {
         int section_number = getArguments().getInt(ARG_SECTION_NUMBER);
         switch (section_number) {
             case 1:
-                grid.setAdapter(new LocalitationsAdapter(getActivity(),Locacion.getLocaciones()));
+                grid.setAdapter(new LocalitationsAdapter(getActivity(),MenuActivity.getLocaciones()));
                 break;
             case 2:
-                grid.setAdapter(new ProductaAdapter(getActivity(), Producto.getProductos()));
+                grid.setAdapter(new ProductaAdapter(getActivity(), MenuActivity.getProductos()));
                 break;
         }
     }

@@ -1,5 +1,9 @@
 package com.apps.luma.elbondicervecerianomade;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -39,6 +43,8 @@ public class MenuActivity extends AppCompatActivity{
     private Producto producto;
     private static Producto[] productos;
     private static Locacion[] locaciones;
+    private Bitmap bitBeer;
+    private Bitmap bitGps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +53,8 @@ public class MenuActivity extends AppCompatActivity{
         auth = FirebaseAuth.getInstance();
         tabs = (TabLayout) findViewById(R.id.tabs);
         paginas = (ViewPager) findViewById(R.id.paginas);
-
+        this.bitGps = BitmapFactory.decodeResource(this.getResources(),R.drawable.gps);
+        this.bitBeer = BitmapFactory.decodeResource(this.getResources(),R.drawable.beer);
         //Data data = new Data(this);//BLOQUEADO PARA PRUEBAS
 
         try {
@@ -64,8 +71,8 @@ public class MenuActivity extends AppCompatActivity{
 
         private void setupViewPager(ViewPager viewPager) {
             SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-            adapter.addFragment(GridFragmentLocalitations.newInstance(1), getResources().getDrawable(R.drawable.gps,this.getTheme()));
-            adapter.addFragment(GridFragmentProducts.newInstance(2), getResources().getDrawable(R.drawable.beer,this.getTheme()));
+            adapter.addFragment(GridFragmentLocalitations.newInstance(1), new BitmapDrawable(this.getResources(),this.bitGps));
+            adapter.addFragment(GridFragmentProducts.newInstance(2), new BitmapDrawable(this.getResources(),this.bitBeer));
             viewPager.setAdapter(adapter);
         }
 
@@ -119,18 +126,18 @@ public class MenuActivity extends AppCompatActivity{
 
     private void hardCodeoPaginas() throws ParseException, IOException { //PARA PRUEBAS
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        String sortFecha = "1509235200000";
+        String sortFecha = "1510272000000";
         Long millisecond = Long.parseLong(sortFecha);
         Calendar cal = Calendar.getInstance();
         String dateString = formatter.format(new Date(millisecond));
         cal.setTime(formatter.parse(dateString));
-        Locacion loc1 = new Locacion("6a65465ds4a654ads","San Martin 3407",cal,"NOTA","2sdas654asd654");
-        sortFecha = "1509321600000";
+        Locacion loc1 = new Locacion("6a65465ds4a654ads","CASA LALALA",cal,"NOTA","2sdas654asd654");
+        sortFecha = "1510358400000";
         millisecond = Long.parseLong(sortFecha);
         dateString = formatter.format(new Date(millisecond));
         cal.setTime(formatter.parse(dateString));
         Locacion loc2 = new Locacion("6a65465ds4saddads","San Martin 3408",cal,"NOTA","2sdas654asd554");
-        sortFecha = "1509408000000";
+        sortFecha = "1510531200000";
         millisecond = Long.parseLong(sortFecha);
         dateString = formatter.format(new Date(millisecond));
         cal.setTime(formatter.parse(dateString));

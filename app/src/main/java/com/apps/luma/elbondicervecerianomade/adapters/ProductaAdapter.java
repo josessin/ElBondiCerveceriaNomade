@@ -45,7 +45,7 @@ public class ProductaAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.grid_item, parent, false);
+            convertView = inflater.inflate(R.layout.grid_products, parent, false);
         }
         Producto item = (Producto) getItem(position);
         ImageView image = (ImageView) convertView.findViewById(R.id.imagen);

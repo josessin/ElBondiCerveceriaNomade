@@ -21,6 +21,7 @@ import com.apps.luma.elbondicervecerianomade.modelo.Producto;
 
 public class GridFragmentLocalitations extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
+
     public static GridFragmentLocalitations newInstance(int sectionNumber) {
         GridFragmentLocalitations fragment = new GridFragmentLocalitations();
         Bundle args = new Bundle();
@@ -28,8 +29,8 @@ public class GridFragmentLocalitations extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public GridFragmentLocalitations()
-    {
+
+    public GridFragmentLocalitations() {
 
     }
 

@@ -19,8 +19,7 @@ import okhttp3.Response;
 /**
  * Created by Jrepetto on 28/10/2017.
  */
-enum Estado
-{
+enum Estado {
     CORRIENDO, PAUSA, FIN;
 }
 
@@ -47,11 +46,10 @@ public class Data {
 
     }
 
-    public void ejecutarSentencia()
-    {
-        if(local != null && produc != null){
-            menu.receptionLocations(local,produc);
-        }else{
+    public void ejecutarSentencia() {
+        if (local != null && produc != null) {
+            menu.receptionLocations(local, produc);
+        } else {
             return;
         }
     }
@@ -70,7 +68,8 @@ public class Data {
         public void setTipo(Tipo tipo) {
             this.tipo = tipo;
         }
-        public void setEstado(Estado estado){
+
+        public void setEstado(Estado estado) {
             this.estado = estado;
         }
 
@@ -93,9 +92,9 @@ public class Data {
                     publishProgress(result);
                 }
 
-                if(estado == Estado.PAUSA){
+                if (estado == Estado.PAUSA) {
                     doInBackground();
-                }else {
+                } else {
                     return null;
                 }
 
@@ -114,7 +113,7 @@ public class Data {
                 if (tipo == Tipo.LOCACION) {
                     local = response;
                     estado = Estado.PAUSA;
-                }else{
+                } else {
                     produc = response;
                     estado = Estado.FIN;
                 }

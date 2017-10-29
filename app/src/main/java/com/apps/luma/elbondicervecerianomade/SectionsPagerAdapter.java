@@ -1,20 +1,13 @@
 package com.apps.luma.elbondicervecerianomade;
 
-
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
-import android.widget.GridView;
-
-import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentLocalitations;
-import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentProducts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,32 +17,32 @@ import java.util.List;
  */
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragments = new ArrayList<>();
-        private final List<BitmapDrawable> mFragmentTitle = new ArrayList<>();
+    private final List<Fragment> mFragments = new ArrayList<>();
+    private final List<BitmapDrawable> mFragmentTitle = new ArrayList<>();
 
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
+    public SectionsPagerAdapter(FragmentManager fm) {
+        super(fm);
+    }
 
-        @Override
-        public Fragment getItem(int position) {
-            return mFragments.get(position);
-        }
+    @Override
+    public Fragment getItem(int position) {
+        return mFragments.get(position);
+    }
 
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
+    @Override
+    public int getCount() {
+        return mFragments.size();
+    }
 
-        public void addFragment(Fragment fragment, BitmapDrawable title) {
-            mFragments.add(fragment);
-            mFragmentTitle.add(title);
-        }
+    public void addFragment(Fragment fragment, BitmapDrawable title) {
+        mFragments.add(fragment);
+        mFragmentTitle.add(title);
+    }
 
     @Override
     public CharSequence getPageTitle(int position) {
         BitmapDrawable icono;
-        switch(position){
+        switch (position) {
             case 0:
                 icono = mFragmentTitle.get(position);
                 break;

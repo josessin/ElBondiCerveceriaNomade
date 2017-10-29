@@ -29,7 +29,6 @@ public class MenuActivity extends AppCompatActivity{
     FirebaseAuth auth;
     private ViewPager paginas;
     private TabLayout tabs;
-    private Data data = new Data(this);
     private Locacion locacion;
     private Producto producto;
     private Producto[] productos;
@@ -45,8 +44,8 @@ public class MenuActivity extends AppCompatActivity{
         tabs.addTab(tabs.newTab().setIcon(R.drawable.gpswhite));
         tabs.addTab(tabs.newTab().setIcon(R.drawable.beerwhite));
         Data data = new Data(this);
-        data.pedidoDatos(getResources().getString(R.string.locations_url));
-        data.pedidoDatos(getResources().getString(R.string.products_url));
+        data.pedidoDatos(Tipo.LOCACION);
+        data.pedidoDatos(Tipo.PRODUCTOS);
 
     }
 

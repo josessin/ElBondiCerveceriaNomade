@@ -9,7 +9,15 @@
         <item name="colorControlNormal">@color/grey</item>
         <item name="colorControlActivated">@color/purple</item>
         <item name="colorControlHighlight">@color/grey</item>
-        <item name="android:windowBackground">@color/grey</item>
+        <item name="android:windowBackground">@drawable/fondoentrada</item>
+
+
+    </style>
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/gpsColor</item>
     </style>
 
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/maastrichtBlue</item>
+    </style>
 </resources>

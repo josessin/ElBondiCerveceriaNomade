@@ -13,4 +13,5 @@
     <color name="yellow">#ffea00</color>
     <color name="red_logo">#e20512</color>
     <color name="orange_logo">#ee7c00</color>
+    <color name="gpsColor">#f4b300</color>
 </resources>

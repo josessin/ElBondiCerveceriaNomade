@@ -3,6 +3,7 @@ package com.apps.luma.elbondicervecerianomade.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class LocalitationsAdapter extends BaseAdapter {
     public LocalitationsAdapter(Context context, Locacion[] locaciones) {
         this.context = context;
         this.locaciones = locaciones;
-        if (!this.locaciones.equals(null)) {
+        if (this.locaciones != null) {
             this.setlocacion = this.locaciones[0];
         }else{
 
@@ -74,7 +75,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.setdireccion = direccion;
         this.calendarView = calendar;
         this.gpsbuttonView = gpsbtn;
-        if(!this.locaciones.equals(null)) {
+        if(this.locaciones != null) {
             this.calendarView.setMinDate(this.locaciones[0].getFecha().getTimeInMillis());
             this.calendarView.setMaxDate(this.locaciones[this.locaciones.length - 1].getFecha().getTimeInMillis());
             if (this.setlocacion == null) {
@@ -87,7 +88,8 @@ public class LocalitationsAdapter extends BaseAdapter {
             this.calendarView.setClickable(false);
             this.gpsbuttonView.setClickable(false);
             this.setnota.setText("NO DISPONIBLE");
-            this.setdireccion.setText("NO HAY PROXIMAS SALIDAS");
+            this.setdireccion.setText("No hay direcciones cargadas");
+            this.setdireccion.setTextSize(15);
         }
 
 
@@ -101,6 +103,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         final View convertView2 = convertView;
         final ViewGroup parent2 = parent;
         this.setnota = nota;
+        this.setnota.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         this.setdireccion = direccion;
         this.gpsbuttonView = gpsbtn;
         this.calendarView = calendar;
@@ -111,7 +114,8 @@ public class LocalitationsAdapter extends BaseAdapter {
         } else {
             this.calendarView.setClickable(false);
             this.calendarView.setDate(this.FechaError);
-            setdireccion.setText("NO TRABAJAMOS ESTE DIA");
+            setdireccion.setText("Viajando a destino");
+            setdireccion.setTextSize(15);
             setnota.setText("NO DISPONIBLE");
             gpsbuttonView.setClickable(false);
         }

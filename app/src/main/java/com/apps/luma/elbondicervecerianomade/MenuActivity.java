@@ -1,8 +1,5 @@
 package com.apps.luma.elbondicervecerianomade;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -39,18 +36,17 @@ public class MenuActivity extends AppCompatActivity {
     private Producto producto;
     private static Producto[] productos;
     private static Locacion[] locaciones;
-    private Bitmap bitBeer;
-    private Bitmap bitGps;
+    private TabLayout.Tab iconBeer;
+    private TabLayout.Tab iconGps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        auth = FirebaseAuth.getInstance();
         tabs = (TabLayout) findViewById(R.id.tabs);
+        auth = FirebaseAuth.getInstance();
         paginas = (ViewPager) findViewById(R.id.paginas);
-        this.bitGps = BitmapFactory.decodeResource(this.getResources(), R.drawable.gps);
-        this.bitBeer = BitmapFactory.decodeResource(this.getResources(), R.drawable.beer);
+
         try {
             hardCodeoPaginas(); //TODO: PARA PRUEBAS
         } catch (ParseException e) {
@@ -65,10 +61,15 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
+        tabs.addTab(tabs.newTab().setIcon(R.drawable.gpswhite));
+        tabs.addTab(tabs.newTab().setIcon(R.drawable.beerwhite));
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(GridFragmentLocalitations.newInstance(1), new BitmapDrawable(this.getResources(), this.bitGps));
-        adapter.addFragment(GridFragmentProducts.newInstance(2), new BitmapDrawable(this.getResources(), this.bitBeer));
+        adapter.addFragment(GridFragmentLocalitations.newInstance(1));
+        adapter.addFragment(GridFragmentProducts.newInstance(2));
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
+        tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+
     }
 
 
@@ -99,7 +100,6 @@ public class MenuActivity extends AppCompatActivity {
 
             if (productos != null && locaciones != null) {
                 setupViewPager(paginas);
-                tabs.setupWithViewPager(paginas);
             }
 
 
@@ -122,7 +122,7 @@ public class MenuActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         String dateString = formatter.format(new Date(millisecond));
         cal.setTime(formatter.parse(dateString));
-        Locacion loc1 = new Locacion("6a65465ds4a654ads", "CASA LALALA", cal, "Hola jose mira como se ve esto \n va quedando el diseño ;) ", "2sdas654asd654");
+        Locacion loc1 = new Locacion("6a65465ds4a654ads", "CASA LALALA", cal, "Hola jose mira como se ve esto va quedando el diseño ;)dsfdsfdsfdsfd dfs fdsfdsfs dfsdfdsfdsfdsf sdfdsfsdfdsfdsf sdf ", "2sdas654asd654");
         String sortFecha2 = "1510455600000";
         Long millisecond2 = Long.parseLong(sortFecha2);
         Calendar cal2 = Calendar.getInstance();
@@ -148,7 +148,7 @@ public class MenuActivity extends AppCompatActivity {
         Producto[] productosHard = {prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8};
         this.productos = productosHard;
         setupViewPager(paginas);
-        tabs.setupWithViewPager(paginas);
+
     }//TODO: FIN PRUEBA
 
     private static void setLocaciones(Locacion[] nana) {

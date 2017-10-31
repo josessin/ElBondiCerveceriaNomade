@@ -8,7 +8,8 @@
     android:numColumns="2"
     android:padding="@dimen/grid_view_padding"
     android:stretchMode="columnWidth"
-    android:verticalSpacing="@dimen/grid_view_padding" >
+    android:verticalSpacing="@dimen/grid_view_padding"
+    android:background="@color/background_nota_gridL">
 
 
 </GridView>

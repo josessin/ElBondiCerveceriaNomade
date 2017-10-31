@@ -89,7 +89,6 @@ public class LocalitationsAdapter extends BaseAdapter {
             this.gpsbuttonView.setClickable(false);
             this.setnota.setText("NO DISPONIBLE");
             this.setdireccion.setText("No hay direcciones cargadas");
-            this.setdireccion.setTextSize(15);
         }
 
 
@@ -115,7 +114,6 @@ public class LocalitationsAdapter extends BaseAdapter {
             this.calendarView.setClickable(false);
             this.calendarView.setDate(this.FechaError);
             setdireccion.setText("Viajando a destino");
-            setdireccion.setTextSize(15);
             setnota.setText("NO DISPONIBLE");
             gpsbuttonView.setClickable(false);
         }

@@ -66,18 +66,18 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        tabs.addTab(tabs.newTab().setIcon(R.drawable.gpswhite));
-        tabs.addTab(tabs.newTab().setIcon(R.drawable.beerwhite));
+        tabs.addTab(tabs.newTab().setIcon(R.drawable.gps));
+        tabs.addTab(tabs.newTab().setIcon(R.drawable.beer));
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(Color.rgb(238,124,0), PorterDuff.Mode.SRC_IN);
+                tab.getIcon().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);//rgb(238,124,0)NARANJA
 
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+                tab.getIcon().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
             }
 
             @Override

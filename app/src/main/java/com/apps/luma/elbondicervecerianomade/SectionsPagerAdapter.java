@@ -39,5 +39,4 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mFragments.add(fragment);
     }
 
-
 }

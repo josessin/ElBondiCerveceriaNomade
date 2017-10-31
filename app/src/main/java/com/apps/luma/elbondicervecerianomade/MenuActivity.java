@@ -1,7 +1,11 @@
 package com.apps.luma.elbondicervecerianomade;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -31,7 +35,7 @@ public class MenuActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     private ViewPager paginas;
-    private TabLayout tabs;
+    public TabLayout tabs;
     private Locacion locacion;
     private Producto producto;
     private static Producto[] productos;
@@ -58,11 +62,30 @@ public class MenuActivity extends AppCompatActivity {
         //       data.pedidoDatos(Tipo.LOCACION);//TODO: BLOQUEADO PARA PRUEBAS
         //       data.pedidoDatos(Tipo.PRODUCTOS);//TODO: BLOQUEADO PARA PRUEBAS
 
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
         tabs.addTab(tabs.newTab().setIcon(R.drawable.gpswhite));
         tabs.addTab(tabs.newTab().setIcon(R.drawable.beerwhite));
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(Color.rgb(238,124,0), PorterDuff.Mode.SRC_IN);
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(GridFragmentLocalitations.newInstance(1));
         adapter.addFragment(GridFragmentProducts.newInstance(2));

@@ -194,4 +194,15 @@ public class MenuActivity extends AppCompatActivity {
         AuthUI.getInstance().signOut(this);
     }
 
-}
+/* @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            pedirDatos();
+        } else {
+            //TODO: Manejar permisos not granted
+            finish();
+        }
+        return;
+
+    }*/}

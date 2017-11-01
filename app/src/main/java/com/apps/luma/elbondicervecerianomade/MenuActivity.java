@@ -95,7 +95,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    public void receptionLocations(JSONObject objLoca, JSONObject objProd) throws JSONException {
+    public void receptionDatos(JSONObject objLoca, JSONObject objProd) throws JSONException {
         Log.d("JSONNN",objLoca.toString(3));
         try {
             ObjectMapper mapper = new ObjectMapper();

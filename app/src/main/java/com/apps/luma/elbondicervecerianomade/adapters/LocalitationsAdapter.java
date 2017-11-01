@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,8 +17,6 @@ import android.widget.TextView;
 import com.apps.luma.elbondicervecerianomade.R;
 import com.apps.luma.elbondicervecerianomade.modelo.Locacion;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -44,7 +41,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.locaciones = locaciones;
         if (this.locaciones != null) {
             this.setlocacion = this.locaciones[0];
-        }else{
+        } else {
 
         }
     }
@@ -80,7 +77,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.setdireccion = direccion;
         this.calendarView = calendar;
         this.gpsbuttonView = gpsbtn;
-        if(this.locaciones != null) {
+        if (this.locaciones != null) {
             this.calendarView.setMinDate(this.locaciones[0].getFecha().getTimeInMillis());
             this.calendarView.setMaxDate(this.locaciones[this.locaciones.length - 1].getFecha().getTimeInMillis());
             if (this.setlocacion == null) {
@@ -88,8 +85,8 @@ public class LocalitationsAdapter extends BaseAdapter {
             } else {
                 this.calendarView.setDate(this.setlocacion.getFecha().getTimeInMillis());
             }
-            cargaDatos(direccion,nota,gpsbtn, calendar,position, convertView, parent);
-        }else{
+            cargaDatos(direccion, nota, gpsbtn, calendar, position, convertView, parent);
+        } else {
             this.calendarView.setClickable(false);
             this.gpsbuttonView.setClickable(false);
             this.setnota.setText("NO DISPONIBLE");
@@ -100,7 +97,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void cargaDatos(TextView direccion,TextView nota, ImageButton gpsbtn, CalendarView calendar,
+    public void cargaDatos(TextView direccion, TextView nota, ImageButton gpsbtn, CalendarView calendar,
                            int position, View convertView, ViewGroup parent) {
         final int position2 = position;
         final View convertView2 = convertView;
@@ -111,30 +108,32 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.gpsbuttonView = gpsbtn;
         this.calendarView = calendar;
         if (this.setlocacion != null) {
-            cargarDireccionGoogle();
+
             this.setdireccion.setText(this.setlocacion.getDireccion());
             this.setnota.setText(this.setlocacion.getNota());
 
         } else {
             this.calendarView.setClickable(false);
             this.calendarView.setDate(this.FechaError);
-            setdireccion.setText("Viajando a destino");
-            setnota.setText("NO DISPONIBLE");
-            gpsbuttonView.setClickable(false);
+            this.setdireccion.setText("Viajando a destino");
+            this.setnota.setText("NO DISPONIBLE");
+            this.gpsbuttonView.setEnabled(false);
+
         }
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Calendar c = new GregorianCalendar( year, month, dayOfMonth );
+                Calendar c = new GregorianCalendar(year, month, dayOfMonth);
                 eleccionFecha(c.getTimeInMillis());
-                getView(position2, convertView2 ,parent2);
+                getView(position2, convertView2, parent2);
             }
         });
 
         this.gpsbuttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri gmmIntentUri = Uri.parse("geo:0,0?z=15q="+direccionGoogle);
+                cargarDireccionGoogle();
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + direccionGoogle);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 context.startActivity(mapIntent);
@@ -145,13 +144,17 @@ public class LocalitationsAdapter extends BaseAdapter {
 
     private void cargarDireccionGoogle() {
         this.direccionGoogle = setdireccion.getText().toString();
+
         this.arrayDirecGoogle = this.direccionGoogle.split(" ");
-        this.direccionGoogle="";
-        for (String direccionGooglefinal: arrayDirecGoogle){
-
-            direccionGoogle = direccionGoogle + "+" + direccionGooglefinal;
-
+        this.direccionGoogle = "";
+        for (int i = 0; i < arrayDirecGoogle.length; i++) {
+            direccionGoogle += arrayDirecGoogle[i];
+            if (i != arrayDirecGoogle.length - 1) {
+                direccionGoogle += "+";
+            }
         }
+        this.direccionGoogle += ", Mendoza, Argentina";
+        Log.d("DIRECION", this.direccionGoogle);
     }
 
     public void eleccionFecha(Long milli) {
@@ -161,10 +164,10 @@ public class LocalitationsAdapter extends BaseAdapter {
         }
 
         for (Locacion nuevaLocacion : this.locaciones) {
-            if (nuevaLocacion.getFecha().getTimeInMillis() == (milli)){
+            if (nuevaLocacion.getFecha().getTimeInMillis() == (milli)) {
                 this.setlocacion = nuevaLocacion;
                 break;
-            }else{
+            } else {
                 this.setlocacion = null;
             }
         }

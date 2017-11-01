@@ -1,6 +1,8 @@
 package com.apps.luma.elbondicervecerianomade.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.Gravity;
@@ -34,6 +36,8 @@ public class LocalitationsAdapter extends BaseAdapter {
     private CalendarView calendarView;
     private ImageButton gpsbuttonView;
     private Long FechaError;
+    private String direccionGoogle;
+    private String[] arrayDirecGoogle;
 
     public LocalitationsAdapter(Context context, Locacion[] locaciones) {
         this.context = context;
@@ -93,7 +97,6 @@ public class LocalitationsAdapter extends BaseAdapter {
         }
 
 
-
         return convertView;
     }
 
@@ -108,6 +111,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.gpsbuttonView = gpsbtn;
         this.calendarView = calendar;
         if (this.setlocacion != null) {
+            cargarDireccionGoogle();
             this.setdireccion.setText(this.setlocacion.getDireccion());
             this.setnota.setText(this.setlocacion.getNota());
 
@@ -130,9 +134,24 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.gpsbuttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?z=15q="+direccionGoogle);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                context.startActivity(mapIntent);
 
             }
         });
+    }
+
+    private void cargarDireccionGoogle() {
+        this.direccionGoogle = setdireccion.getText().toString();
+        this.arrayDirecGoogle = this.direccionGoogle.split(" ");
+        this.direccionGoogle="";
+        for (String direccionGooglefinal: arrayDirecGoogle){
+
+            direccionGoogle = direccionGoogle + "+" + direccionGooglefinal;
+
+        }
     }
 
     public void eleccionFecha(Long milli) {

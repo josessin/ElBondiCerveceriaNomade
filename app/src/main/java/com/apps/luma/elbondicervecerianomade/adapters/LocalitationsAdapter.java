@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.apps.luma.elbondicervecerianomade.R;
@@ -31,7 +32,7 @@ public class LocalitationsAdapter extends BaseAdapter {
     private TextView setdireccion;
     private TextView setnota;
     private CalendarView calendarView;
-    private Button gpsbuttonView;
+    private ImageButton gpsbuttonView;
     private Long FechaError;
 
     public LocalitationsAdapter(Context context, Locacion[] locaciones) {
@@ -69,7 +70,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         }
         final TextView direccion = (TextView) convertView.findViewById(R.id.direccionTextV);
         final TextView nota = (TextView) convertView.findViewById(R.id.notaTextV);
-        final Button gpsbtn = (Button) convertView.findViewById(R.id.gpsbtn);
+        final ImageButton gpsbtn = (ImageButton) convertView.findViewById(R.id.gpsbtn);
         CalendarView calendar = (CalendarView) convertView.findViewById(R.id.calendarV);
         this.setnota = nota;
         this.setdireccion = direccion;
@@ -96,7 +97,7 @@ public class LocalitationsAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void cargaDatos(TextView direccion,TextView nota, Button gpsbtn, CalendarView calendar,
+    public void cargaDatos(TextView direccion,TextView nota, ImageButton gpsbtn, CalendarView calendar,
                            int position, View convertView, ViewGroup parent) {
         final int position2 = position;
         final View convertView2 = convertView;

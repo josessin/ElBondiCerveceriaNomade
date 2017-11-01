@@ -9,20 +9,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tabs">
+        android:layout_below="@+id/tabs"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/fondo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/orange_logo"
+            >
     <android.support.v4.view.ViewPager
         android:id="@+id/paginas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+
         />
+        </RelativeLayout>
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_calendar"
+        android:background="#FFF5E2"
         app:tabIndicatorColor="@color/black"
         android:layout_alignParentStart="true">
 

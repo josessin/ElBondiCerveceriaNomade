@@ -7,14 +7,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+    <LinearLayout
+        android:id="@+id/layoutcalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        >
+        <CalendarView
 
+            android:id="@+id/calendarV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:theme="@style/CalenderViewCustom"
+            android:background="@color/orange_logo"
+            android:layout_below="@+id/layoutcalendar"
+            >
+        </CalendarView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_gravity="top"
+        android:layout_gravity="bottom"
         android:layout_height="230dp"
-        android:background="@color/background_nota_gridL"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#FFF5E2">
 
         <TextView
             android:id="@+id/direccionTextV"
@@ -23,8 +41,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:background="@drawable/border"
             android:layout_weight="0.01"
-            android:background="@color/tuchmasclaro"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="14dp" />
@@ -32,7 +50,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="163dp"
-
             android:gravity="center"
             android:orientation="horizontal"
             >
@@ -40,52 +57,35 @@
             <TextView
                 android:id="@+id/notaTextV"
                 android:layout_width="253dp"
-                android:layout_height="144dp"
+                android:layout_height="match_parent"
                 android:layout_above="@+id/calendarV"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/direccionTextV"
-                android:layout_marginTop="4dp"
                 android:textSize="14dp"
                 android:layout_toStartOf="@+id/gpsbtn"
-                android:textColor="@color/white" />
+                android:textColor="#586F7C" />
 
              <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="129dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:weightSum="1">
 
-                <Button
+                <ImageButton
                     android:id="@+id/gpsbtn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="160dp"
                     android:background="@color/tw__transparent"
-                    android:drawableBottom="@drawable/gpsclickyellow" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/gpsclickyellow"/>
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical"
-        android:background="@color/background_calendar"
-        >
-        <CalendarView
-            android:id="@+id/calendarV"
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:background="@color/background_gridL"
-            android:clickable="true"
-            android:theme="@style/CalenderViewCustom"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
-    </LinearLayout>
 
 
 </LinearLayout>

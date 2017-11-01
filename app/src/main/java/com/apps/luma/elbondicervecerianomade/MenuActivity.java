@@ -1,5 +1,6 @@
 package com.apps.luma.elbondicervecerianomade;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -66,12 +67,13 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
+        final int color = ContextCompat.getColor(this, R.color.orange_logo);
         tabs.addTab(tabs.newTab().setIcon(R.drawable.gps));
         tabs.addTab(tabs.newTab().setIcon(R.drawable.beer));
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                tab.getIcon().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);//rgb(238,124,0)NARANJA
+                tab.getIcon().setColorFilter(color, PorterDuff.Mode.SRC_IN);
 
             }
 

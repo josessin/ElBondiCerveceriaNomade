@@ -14,7 +14,7 @@
 
     </style>
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
-        <item name="colorAccent">@color/gpsColor</item>
+        <item name="colorAccent">#FFF5E2</item>
 
     </style>
     <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">

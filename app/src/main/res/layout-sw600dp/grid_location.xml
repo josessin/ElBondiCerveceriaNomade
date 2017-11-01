@@ -23,6 +23,7 @@
             android:theme="@style/CalenderViewCustom"
             android:background="@color/orange_logo"
             android:layout_below="@+id/layoutcalendar"
+
             >
         </CalendarView>
     </LinearLayout>

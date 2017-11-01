@@ -7,22 +7,43 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class Producto {
+    @JsonProperty("uid") private String uid;
     @JsonProperty("nombre") private String nombre;
-    @JsonProperty("imgUrl") private int imgUrl;
+    @JsonProperty("imgUrl") private String imgUrl;
     @JsonProperty("descripcion") private String descripcion;
     @JsonProperty("precio") private String precio;
+    @JsonProperty("activo") private boolean activo;
 
 
-    public Producto(String nombre, int imgUrl, String descripcion, String precio) {
+    public Producto( String uid, String nombre, String imgUrl, String descripcion, String precio, boolean activo) {
+        this.uid = uid;
         this.nombre = nombre;
         this.imgUrl = imgUrl;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.activo = activo;
+
     }
 
     public Producto()
     {
 
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public String getNombre() {
@@ -33,11 +54,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public int getImgUrl() {
+    public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgUrl(int imgUrl) {
+    public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
 

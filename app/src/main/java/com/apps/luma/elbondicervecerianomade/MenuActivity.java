@@ -1,7 +1,5 @@
 package com.apps.luma.elbondicervecerianomade;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -11,25 +9,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.apps.luma.elbondicervecerianomade.api.Information;
 import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentLocalitations;
 import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentProducts;
 import com.apps.luma.elbondicervecerianomade.modelo.Locacion;
 import com.apps.luma.elbondicervecerianomade.modelo.Producto;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 
 public class MenuActivity extends AppCompatActivity {
@@ -51,20 +46,22 @@ public class MenuActivity extends AppCompatActivity {
         tabs = (TabLayout) findViewById(R.id.tabs);
         auth = FirebaseAuth.getInstance();
         paginas = (ViewPager) findViewById(R.id.paginas);
+        new Information(this);
 
-        try {
+       /*try {
             hardCodeoPaginas(); //TODO: PARA PRUEBAS
         } catch (ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         //Data data = new Data(this);//TODO: BLOQUEADO PARA PRUEBAS
         //       data.pedidoDatos(Tipo.LOCACION);//TODO: BLOQUEADO PARA PRUEBAS
         //       data.pedidoDatos(Tipo.PRODUCTOS);//TODO: BLOQUEADO PARA PRUEBAS
 
 
     }
+
 
     private void setupViewPager(ViewPager viewPager) {
         final int color = ContextCompat.getColor(this, R.color.orange_logo);
@@ -98,7 +95,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    public void receptionLocations(JSONObject objLoca, JSONObject objProd) {
+    public void receptionLocations(JSONObject objLoca, JSONObject objProd) throws JSONException {
+        Log.d("JSONNN",objLoca.toString(3));
         try {
             ObjectMapper mapper = new ObjectMapper();
             Log.d("JSON", objLoca.toString(3));
@@ -140,7 +138,7 @@ public class MenuActivity extends AppCompatActivity {
         //this.activityLocaciones = new LocacionesActivity(info);
     }
 
-    private void hardCodeoPaginas() throws ParseException, IOException { //TODO: PARA PRUEBAS
+    /*private void hardCodeoPaginas() throws ParseException, IOException { //TODO: PARA PRUEBAS
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         String sortFecha = "1510369200000";
         Long millisecond = Long.parseLong(sortFecha);
@@ -174,7 +172,7 @@ public class MenuActivity extends AppCompatActivity {
         this.productos = productosHard;
         setupViewPager(paginas);
 
-    }//TODO: FIN PRUEBA
+    }*///TODO: FIN PRUEBA
 
     private static void setLocaciones(Locacion[] nana) {
         locaciones = nana;
@@ -207,4 +205,5 @@ public class MenuActivity extends AppCompatActivity {
         }
         return;
 
-    }*/}
+    }*/
+}

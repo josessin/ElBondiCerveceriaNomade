@@ -9,13 +9,18 @@ import java.util.Calendar;
  */
 
 public class Locacion {
-    @JsonProperty("uid") private String uid;
-    @JsonProperty("direccion") private String direccion;
-    @JsonProperty ("fecha") private Calendar fecha;
-    @JsonProperty("nota") private String nota;
-    @JsonProperty("sortFecha") private String sortFecha;
+    @JsonProperty("uid")
+    private String uid;
+    @JsonProperty("direccion")
+    private String direccion;
+    @JsonProperty("fecha")
+    private String fecha;
+    @JsonProperty("nota")
+    private String nota;
+    @JsonProperty("sortFecha")
+    private String sortFecha;
 
-    public Locacion(String uid, String direccion, Calendar fecha, String nota, String sortFecha) {
+    public Locacion(String uid, String direccion, String fecha, String nota, String sortFecha) {
         this.uid = uid;
         this.direccion = direccion;
         this.fecha = fecha;
@@ -23,8 +28,7 @@ public class Locacion {
         this.sortFecha = sortFecha;
     }
 
-    public Locacion()
-    {
+    public Locacion() {
 
     }
 
@@ -52,11 +56,11 @@ public class Locacion {
         this.direccion = direccion;
     }
 
-    public Calendar getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Calendar fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

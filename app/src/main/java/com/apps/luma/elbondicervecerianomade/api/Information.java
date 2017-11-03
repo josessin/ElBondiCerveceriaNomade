@@ -19,12 +19,12 @@ public class Information {
     private MenuActivity menuActivity;
     private List<JSONObject> datos = new ArrayList<>();
 
-    public Information(MenuActivity menuActivity){
+    public Information(MenuActivity menuActivity) {
         this.menuActivity = menuActivity;
         hacerPedidos();
     }
 
-    private void hacerPedidos(){
+    private void hacerPedidos() {
         Pedido p1 = new Pedido(menuActivity.getResources().getString(R.string.locations_url), this);
         p1.execute();
         Pedido p2 = new Pedido(menuActivity.getResources().getString(R.string.products_url), this);
@@ -35,8 +35,8 @@ public class Information {
     public void resivirInfo(JSONObject s) throws JSONException {
         datos.add(s);
         Log.d("JSONNN", s.toString(3));
-        if(datos.size()==2){
-            menuActivity.receptionDatos(datos.get(0),datos.get(1));
+        if (datos.size() == 2) {
+            menuActivity.receptionDatos(datos.get(0), datos.get(1));
         }
     }
 }

@@ -47,31 +47,17 @@ public class MenuActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         paginas = (ViewPager) findViewById(R.id.paginas);
         new Information(this);
-
-       /*try {
-            hardCodeoPaginas(); //TODO: PARA PRUEBAS
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        //Data data = new Data(this);//TODO: BLOQUEADO PARA PRUEBAS
-        //       data.pedidoDatos(Tipo.LOCACION);//TODO: BLOQUEADO PARA PRUEBAS
-        //       data.pedidoDatos(Tipo.PRODUCTOS);//TODO: BLOQUEADO PARA PRUEBAS
-
-
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         final int color = ContextCompat.getColor(this, R.color.orange_logo);
         tabs.addTab(tabs.newTab().setIcon(R.drawable.gps));
         tabs.addTab(tabs.newTab().setIcon(R.drawable.beer));
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 tab.getIcon().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-
             }
 
             @Override
@@ -81,7 +67,6 @@ public class MenuActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
@@ -91,12 +76,10 @@ public class MenuActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
         tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
-
     }
 
-
     public void receptionDatos(JSONObject objLoca, JSONObject objProd) throws JSONException {
-        Log.d("JSONNN",objLoca.toString(3));
+        Log.d("JSONNN", objLoca.toString(3));
         try {
             ObjectMapper mapper = new ObjectMapper();
             Log.d("JSON", objLoca.toString(3));
@@ -125,7 +108,6 @@ public class MenuActivity extends AppCompatActivity {
                 setupViewPager(paginas);
             }
 
-
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -135,44 +117,7 @@ public class MenuActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //this.activityLocaciones = new LocacionesActivity(info);
     }
-
-    /*private void hardCodeoPaginas() throws ParseException, IOException { //TODO: PARA PRUEBAS
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        String sortFecha = "1510369200000";
-        Long millisecond = Long.parseLong(sortFecha);
-        Calendar cal = Calendar.getInstance();
-        String dateString = formatter.format(new Date(millisecond));
-        cal.setTime(formatter.parse(dateString));
-        Locacion loc1 = new Locacion("6a65465ds4a654ads", "CASA LALALA", cal, "Hola jose mira como se ve esto va quedando el diseño ;)dsfdsfdsfdsfd dfs fdsfdsfs dfsdfdsfdsfdsf sdfdsfsdfdsfdsf sdf ", "2sdas654asd654");
-        String sortFecha2 = "1510455600000";
-        Long millisecond2 = Long.parseLong(sortFecha2);
-        Calendar cal2 = Calendar.getInstance();
-        String dateString2 = formatter.format(new Date(millisecond2));
-        cal2.setTime(formatter.parse(dateString2));
-        Locacion loc2 = new Locacion("6a65465ds4saddads", "San Martin 3408", cal2, "NOTA", "2sdas654asd554");
-        String sortFecha3 = "1510714800000";
-        Long millisecond3 = Long.parseLong(sortFecha3);
-        Calendar cal3 = Calendar.getInstance();
-        String dateString3 = formatter.format(new Date(millisecond3));
-        cal3.setTime(formatter.parse(dateString3));
-        Locacion loc3 = new Locacion("6a54465ds4saddads", "MI CASA", cal3, "NOTA", "2sdas644asd554");
-        Locacion[] locacionesHard = {loc1, loc2, loc3};
-        this.locaciones = locacionesHard;
-        Producto prod1 = new Producto("CERVEZA CACA", R.drawable.beergreen, "DESCRIPCION", "$555");
-        Producto prod2 = new Producto("CERVEZA IPA", R.drawable.beeryellow, "DESCRIPCION2", "$555");
-        Producto prod3 = new Producto("CERVEZA DOBLE", R.drawable.gpsclickgreen, "DESCRIPCION3", "$555");
-        Producto prod4 = new Producto("CERVEZA MAMA", R.drawable.gpsred, "DESCRIPCION4", "$555");
-        Producto prod5 = new Producto("CERVEZA MIA", R.drawable.gpsclickred, "DESCRIPCION5", "$555");
-        Producto prod6 = new Producto("CERVEZA SAAA", R.drawable.gpsclickgreen, "DESCRIPCION6", "$555");
-        Producto prod7 = new Producto("CERVEZA NO SE", R.drawable.beergreen, "DESCRIPCION7", "$555");
-        Producto prod8 = new Producto("CERVEZA OJALA FUNQUE", R.drawable.beer, "DESCRIPCION8", "$555");
-        Producto[] productosHard = {prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8};
-        this.productos = productosHard;
-        setupViewPager(paginas);
-
-    }*///TODO: FIN PRUEBA
 
     private static void setLocaciones(Locacion[] nana) {
         locaciones = nana;

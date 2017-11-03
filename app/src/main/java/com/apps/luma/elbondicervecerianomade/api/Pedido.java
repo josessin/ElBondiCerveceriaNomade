@@ -60,7 +60,7 @@ public class Pedido extends AsyncTask<String, Void, String> {
             info.resivirInfo(obj);
         } catch (JSONException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 finalize();
             } catch (Throwable throwable) {

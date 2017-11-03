@@ -17,9 +17,6 @@ import android.widget.TextView;
 import com.apps.luma.elbondicervecerianomade.R;
 import com.apps.luma.elbondicervecerianomade.modelo.Locacion;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 /**
  * Created by Jrepetto on 28/10/2017.
  */
@@ -32,7 +29,7 @@ public class LocalitationsAdapter extends BaseAdapter {
     private TextView setnota;
     private CalendarView calendarView;
     private ImageButton gpsbuttonView;
-    private Long FechaError;
+    private Long fechaError;
     private String direccionGoogle;
     private String[] arrayDirecGoogle;
 
@@ -41,8 +38,6 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.locaciones = locaciones;
         if (this.locaciones != null) {
             this.setlocacion = this.locaciones[0];
-        } else {
-
         }
     }
 
@@ -78,12 +73,12 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.calendarView = calendar;
         this.gpsbuttonView = gpsbtn;
         if (this.locaciones != null) {
-            this.calendarView.setMinDate(this.locaciones[0].getFecha().getTimeInMillis());
-            this.calendarView.setMaxDate(this.locaciones[this.locaciones.length - 1].getFecha().getTimeInMillis());
+            this.calendarView.setMinDate(Long.parseLong(this.locaciones[0].getSortFecha()));
+            this.calendarView.setMaxDate(Long.parseLong(this.locaciones[this.locaciones.length - 1].getSortFecha()));
             if (this.setlocacion == null) {
-                this.calendarView.setDate(this.FechaError);
+                this.calendarView.setDate(this.fechaError);
             } else {
-                this.calendarView.setDate(this.setlocacion.getFecha().getTimeInMillis());
+                this.calendarView.setDate(Long.parseLong(this.setlocacion.getSortFecha()));
             }
             cargaDatos(direccion, nota, gpsbtn, calendar, position, convertView, parent);
         } else {
@@ -92,8 +87,6 @@ public class LocalitationsAdapter extends BaseAdapter {
             this.setnota.setText("NO DISPONIBLE");
             this.setdireccion.setText("No hay direcciones cargadas");
         }
-
-
         return convertView;
     }
 
@@ -108,30 +101,29 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.gpsbuttonView = gpsbtn;
         this.calendarView = calendar;
         if (this.setlocacion != null) {
-
+            this.gpsbuttonView.setEnabled(true);
             this.setdireccion.setText(this.setlocacion.getDireccion());
             this.setnota.setText(this.setlocacion.getNota());
-
         } else {
             this.calendarView.setClickable(false);
-            this.calendarView.setDate(this.FechaError);
+            this.calendarView.setDate(this.fechaError);
             this.setdireccion.setText("Viajando a destino");
             this.setnota.setText("NO DISPONIBLE");
             this.gpsbuttonView.setEnabled(false);
-
         }
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Calendar c = new GregorianCalendar(year,month,dayOfMonth);
-                Log.d("AÑO_MES_DIA", String.valueOf(year) + "/" + String.valueOf(month) + "/" + String.valueOf(dayOfMonth));
-                for (Locacion loca : locaciones) {
-                    Log.d("AÑO_MES_DIA", "AÑO MES DIA DE LOCACION " + ", Milisegundos: "
-                    + String.valueOf(loca.getFecha().getTimeInMillis()) + ", Milisegundos Calendario: " + String.valueOf(c.getTimeInMillis()));
-
+                String dia;
+                if (dayOfMonth <= 9) {
+                    dia = "0" + String.valueOf(dayOfMonth);
+                } else {
+                    dia = String.valueOf(dayOfMonth);
                 }
-               eleccionFecha(c.getTimeInMillis());
-               getView(position2, convertView2, parent2);
+                String fechaCalendario = String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + dia;
+                eleccionFecha(fechaCalendario, view.getDate());
+                Log.d("CALENDARIOFECHALPM", String.valueOf(view.getDateTextAppearance()));
+                getView(position2, convertView2, parent2);
             }
         });
 
@@ -143,7 +135,6 @@ public class LocalitationsAdapter extends BaseAdapter {
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 context.startActivity(mapIntent);
-
             }
         });
     }
@@ -163,14 +154,12 @@ public class LocalitationsAdapter extends BaseAdapter {
         Log.d("DIRECION", this.direccionGoogle);
     }
 
-    public void eleccionFecha(Long milli) {
-        this.FechaError = milli;
-        for (Locacion loca : locaciones) {
-            Log.d("LOCOMOUSHON", loca.getDireccion());
-        }
+    public void eleccionFecha(String fechaCalendario, long milli) {
+        this.fechaError = milli;
 
         for (Locacion nuevaLocacion : this.locaciones) {
-            if (nuevaLocacion.getFecha().getTimeInMillis() == (milli)) {
+            Log.d("FECHALOCYCAL", fechaCalendario + " es igual?" + nuevaLocacion.getFecha());
+            if (nuevaLocacion.getFecha().equals(fechaCalendario)) {
                 this.setlocacion = nuevaLocacion;
                 break;
             } else {

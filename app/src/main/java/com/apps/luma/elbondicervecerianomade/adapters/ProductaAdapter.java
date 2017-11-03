@@ -62,11 +62,12 @@ public class ProductaAdapter extends BaseAdapter {
                 .into(image);
         TextView name = (TextView) convertView.findViewById(R.id.nombre);
         name.setText(item.getNombre());
-        TextView descripcion = (TextView) convertView.findViewById(R.id.descripcion);
-        descripcion.setText(item.getDescripcion());
+        //TextView descripcion = (TextView) convertView.findViewById(R.id.descripcion);
+        //descripcion.setText(item.getDescripcion());
         //TODO:SE SETEA AMARGURA
        /* RatingBar ratingBar = (RatingBar) view.findViewById(R.id.rating);
         ratingBar.setRating(item.getRating())*/
         return convertView;
     }
+
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="maastrichtBlue">#1E1E1E</color>
-    <color name="royalBlue">#3C3C3C</color>
+    <color name="royalBlue">#4D3C3C3C</color>
     <color name="phthaloBlue">#000f99</color>
     <color name="black">#000000</color>
     <color name="gunmetal">#27233a</color>

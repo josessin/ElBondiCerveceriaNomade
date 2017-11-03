@@ -53,4 +53,5 @@ public class GridFragmentProducts extends Fragment {
                 break;
         }
     }
+
 }

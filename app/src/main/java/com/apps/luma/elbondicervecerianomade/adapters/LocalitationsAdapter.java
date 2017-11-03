@@ -123,9 +123,15 @@ public class LocalitationsAdapter extends BaseAdapter {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Calendar c = new GregorianCalendar(year, month, dayOfMonth);
-                eleccionFecha(c.getTimeInMillis());
-                getView(position2, convertView2, parent2);
+                Calendar c = new GregorianCalendar(year,month,dayOfMonth);
+                Log.d("AÑO_MES_DIA", String.valueOf(year) + "/" + String.valueOf(month) + "/" + String.valueOf(dayOfMonth));
+                for (Locacion loca : locaciones) {
+                    Log.d("AÑO_MES_DIA", "AÑO MES DIA DE LOCACION " + ", Milisegundos: "
+                    + String.valueOf(loca.getFecha().getTimeInMillis()) + ", Milisegundos Calendario: " + String.valueOf(c.getTimeInMillis()));
+
+                }
+               eleccionFecha(c.getTimeInMillis());
+               getView(position2, convertView2, parent2);
             }
         });
 

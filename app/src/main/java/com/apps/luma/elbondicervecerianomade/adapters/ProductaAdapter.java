@@ -1,6 +1,10 @@
 package com.apps.luma.elbondicervecerianomade.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +31,9 @@ public class ProductaAdapter extends BaseAdapter {
     public ProductaAdapter(Context context, Producto[] productos) {
         this.context = context;
         this.productos = productos;
+    }
+    public ProductaAdapter(Context context) {
+        this.context = context;
 
     }
 
@@ -36,7 +43,7 @@ public class ProductaAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Producto getItem(int position) {
         return productos[position];
     }
 
@@ -53,13 +60,18 @@ public class ProductaAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.grid_products, parent, false);
         }
 
-        Producto item = (Producto) getItem(position);
+        Producto item = getItem(position);
         StorageReference storageReference = storage.getReference().child("img-productos/" + item.getImgUrl());
         ImageView image = (ImageView) convertView.findViewById(R.id.imagen);
         Glide.with(image.getContext())
                 .using(new FirebaseImageLoader())
                 .load(storageReference)
                 .into(image);
+       /* Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap(); TODO:HACE LA IMAGEN REDONDA (EXPLOA)
+        RoundedBitmapDrawable roundedDrawable =
+                RoundedBitmapDrawableFactory.create(image.getResources(), bitmap);
+        roundedDrawable.setCornerRadius(bitmap.getHeight());
+        image.setImageDrawable(roundedDrawable);*/
         TextView name = (TextView) convertView.findViewById(R.id.nombre);
         name.setText(item.getNombre());
         //TextView descripcion = (TextView) convertView.findViewById(R.id.descripcion);

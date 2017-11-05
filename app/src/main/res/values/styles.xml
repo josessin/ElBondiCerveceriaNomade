@@ -3,13 +3,12 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <!-- Required for sign-in flow styling -->
-        <item name="colorPrimary">@color/darkOrange</item>
-        <item name="colorPrimaryDark">@color/darkOrange</item>
+        <item name="colorPrimary">@color/celphone_bar</item>
+        <item name="colorPrimaryDark">@color/celphone_bar</item>
         <item name="colorAccent">@color/yellow</item>
         <item name="colorControlNormal">@color/grey</item>
-        <item name="colorControlActivated">@color/purple</item>
         <item name="colorControlHighlight">@color/grey</item>
-        <item name="android:windowBackground">@drawable/fondoentrada</item>
+        <item name="android:windowBackground">@color/black</item>
 
 
     </style>

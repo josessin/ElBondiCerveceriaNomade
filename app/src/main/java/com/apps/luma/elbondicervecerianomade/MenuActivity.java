@@ -4,10 +4,15 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
 import com.apps.luma.elbondicervecerianomade.api.Information;
 import com.apps.luma.elbondicervecerianomade.gridFragments.GridFragmentLocalitations;
@@ -32,12 +37,8 @@ public class MenuActivity extends AppCompatActivity {
     FirebaseAuth auth;
     private ViewPager paginas;
     public TabLayout tabs;
-    private Locacion locacion;
-    private Producto producto;
     private static Producto[] productos;
     private static Locacion[] locaciones;
-    private TabLayout.Tab iconBeer;
-    private TabLayout.Tab iconGps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,17 +73,15 @@ public class MenuActivity extends AppCompatActivity {
 
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(GridFragmentLocalitations.newInstance(1));
-        adapter.addFragment(GridFragmentProducts.newInstance(2));
+        adapter.addFragment(GridFragmentProducts.newInstance(2, productos));
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
         tabs.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
     }
 
     public void receptionDatos(JSONObject objLoca, JSONObject objProd) throws JSONException {
-        Log.d("JSONNN", objLoca.toString(3));
         try {
             ObjectMapper mapper = new ObjectMapper();
-            Log.d("JSON", objLoca.toString(3));
             JSONArray arrayLoca = objLoca.getJSONArray("entradas");
             JSONArray arrayProd = objProd.getJSONArray("productos");
 

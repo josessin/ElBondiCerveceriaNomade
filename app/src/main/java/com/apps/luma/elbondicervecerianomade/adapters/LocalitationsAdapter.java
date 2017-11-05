@@ -122,7 +122,6 @@ public class LocalitationsAdapter extends BaseAdapter {
                 }
                 String fechaCalendario = String.valueOf(year) + "-" + String.valueOf(month + 1) + "-" + dia;
                 eleccionFecha(fechaCalendario, view.getDate());
-                Log.d("CALENDARIOFECHALPM", String.valueOf(view.getDateTextAppearance()));
                 getView(position2, convertView2, parent2);
             }
         });
@@ -151,14 +150,12 @@ public class LocalitationsAdapter extends BaseAdapter {
             }
         }
         this.direccionGoogle += ", Mendoza, Argentina";
-        Log.d("DIRECION", this.direccionGoogle);
     }
 
     public void eleccionFecha(String fechaCalendario, long milli) {
         this.fechaError = milli;
 
         for (Locacion nuevaLocacion : this.locaciones) {
-            Log.d("FECHALOCYCAL", fechaCalendario + " es igual?" + nuevaLocacion.getFecha());
             if (nuevaLocacion.getFecha().equals(fechaCalendario)) {
                 this.setlocacion = nuevaLocacion;
                 break;

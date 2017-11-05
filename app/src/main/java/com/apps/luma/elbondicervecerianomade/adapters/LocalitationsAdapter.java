@@ -84,8 +84,8 @@ public class LocalitationsAdapter extends BaseAdapter {
         } else {
             this.calendarView.setClickable(false);
             this.gpsbuttonView.setClickable(false);
-            this.setnota.setText("NO DISPONIBLE");
-            this.setdireccion.setText("No hay direcciones cargadas");
+            this.setnota.setText(R.string.no_disponible);
+            this.setdireccion.setText(R.string.no_destinos);
         }
         return convertView;
     }
@@ -107,8 +107,8 @@ public class LocalitationsAdapter extends BaseAdapter {
         } else {
             this.calendarView.setClickable(false);
             this.calendarView.setDate(this.fechaError);
-            this.setdireccion.setText("Viajando a destino");
-            this.setnota.setText("NO DISPONIBLE");
+            this.setdireccion.setText(R.string.viajando);
+            this.setnota.setText(R.string.no_disponible);
             this.gpsbuttonView.setEnabled(false);
         }
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

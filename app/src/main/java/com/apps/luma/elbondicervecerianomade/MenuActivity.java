@@ -108,13 +108,17 @@ public class MenuActivity extends AppCompatActivity {
             }
 
         } catch (JsonParseException e) {
-            e.printStackTrace();
+            Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+            new Information(this);
         } catch (JsonMappingException e) {
-            e.printStackTrace();
+            Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+            new Information(this);
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+            new Information(this);
         } catch (JSONException e) {
-            e.printStackTrace();
+            Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
+            new Information(this);
         }
     }
 

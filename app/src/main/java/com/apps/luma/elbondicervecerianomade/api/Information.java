@@ -34,7 +34,6 @@ public class Information {
 
     public void resivirInfo(JSONObject s) throws JSONException {
         datos.add(s);
-        Log.d("JSONNN", s.toString(3));
         if (datos.size() == 2) {
             menuActivity.receptionDatos(datos.get(0), datos.get(1));
         }

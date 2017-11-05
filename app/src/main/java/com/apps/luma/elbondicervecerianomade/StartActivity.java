@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.apps.luma.elbondicervecerianomade.exceptions.LoginException;
 import com.firebase.ui.auth.AuthUI;
@@ -81,17 +82,17 @@ public class StartActivity extends AppCompatActivity /*implements View.OnClickLi
                 }
 
                 if (response.getErrorCode() == ErrorCodes.NO_NETWORK) {
-                    //  showSnackbar(R.string.no_internet_connection);
+                    Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 if (response.getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
-                    //   showSnackbar(R.string.unknown_error);
+                       Toast.makeText(this,R.string.unknown_error,Toast.LENGTH_LONG).show();
                     return;
                 }
             }
 
-            //  showSnackbar(R.string.unknown_sign_in_response);
+              Toast.makeText(this,R.string.unknown_sign_in_response,Toast.LENGTH_LONG).show();
         }
     }
 

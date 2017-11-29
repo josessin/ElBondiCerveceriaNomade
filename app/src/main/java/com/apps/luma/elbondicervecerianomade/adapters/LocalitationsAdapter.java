@@ -17,6 +17,11 @@ import android.widget.TextView;
 import com.apps.luma.elbondicervecerianomade.R;
 import com.apps.luma.elbondicervecerianomade.modelo.Locacion;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Jrepetto on 28/10/2017.
  */
@@ -73,12 +78,22 @@ public class LocalitationsAdapter extends BaseAdapter {
         this.calendarView = calendar;
         this.gpsbuttonView = gpsbtn;
         if (this.locaciones != null) {
-            this.calendarView.setMinDate(Long.parseLong(this.locaciones[0].getSortFecha()));
-            this.calendarView.setMaxDate(Long.parseLong(this.locaciones[this.locaciones.length - 1].getSortFecha()));
+            SimpleDateFormat format =  new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                for (Locacion loca : this.locaciones){
+                    Log.i("locacionesFecha", loca.getFecha());
+                    Date dateloca = format.parse(loca.getFecha());
+                    Log.i("LocacionesFechaEnMilli", String.valueOf(dateloca.getTime()));
+                }
+                Date minDate  = format.parse(this.locaciones[0].getFecha());
+                this.calendarView.setMinDate(minDate.getTime());
+                Date maxDate  = format.parse(this.locaciones[this.locaciones.length -1].getFecha());
+                this.calendarView.setMaxDate(maxDate.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             if (this.setlocacion == null) {
                 this.calendarView.setDate(this.fechaError);
-            } else {
-                this.calendarView.setDate(Long.parseLong(this.setlocacion.getSortFecha()));
             }
             cargaDatos(direccion, nota, gpsbtn, calendar, position, convertView, parent);
         } else {

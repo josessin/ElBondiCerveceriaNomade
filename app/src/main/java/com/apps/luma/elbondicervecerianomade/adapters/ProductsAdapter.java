@@ -23,16 +23,16 @@ import com.google.firebase.storage.StorageReference;
  * Created by Jrepetto on 28/10/2017.
  */
 
-public class ProductaAdapter extends BaseAdapter {
+public class ProductsAdapter extends BaseAdapter {
     private Context context;
     private Producto[] productos;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    public ProductaAdapter(Context context, Producto[] productos) {
+    public ProductsAdapter(Context context, Producto[] productos) {
         this.context = context;
         this.productos = productos;
     }
-    public ProductaAdapter(Context context) {
+    public ProductsAdapter(Context context) {
         this.context = context;
 
     }
@@ -67,18 +67,8 @@ public class ProductaAdapter extends BaseAdapter {
                 .using(new FirebaseImageLoader())
                 .load(storageReference)
                 .into(image);
-       /* Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap(); TODO:HACE LA IMAGEN REDONDA (EXPLOA)
-        RoundedBitmapDrawable roundedDrawable =
-                RoundedBitmapDrawableFactory.create(image.getResources(), bitmap);
-        roundedDrawable.setCornerRadius(bitmap.getHeight());
-        image.setImageDrawable(roundedDrawable);*/
         TextView name = (TextView) convertView.findViewById(R.id.nombre);
         name.setText(item.getNombre());
-        //TextView descripcion = (TextView) convertView.findViewById(R.id.descripcion);
-        //descripcion.setText(item.getDescripcion());
-        //TODO:SE SETEA AMARGURA
-       /* RatingBar ratingBar = (RatingBar) view.findViewById(R.id.rating);
-        ratingBar.setRating(item.getRating())*/
         return convertView;
     }
 

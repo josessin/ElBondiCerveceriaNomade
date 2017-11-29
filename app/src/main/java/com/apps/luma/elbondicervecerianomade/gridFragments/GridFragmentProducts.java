@@ -9,16 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.apps.luma.elbondicervecerianomade.MenuActivity;
 import com.apps.luma.elbondicervecerianomade.ProductsDetails;
 import com.apps.luma.elbondicervecerianomade.R;
 import com.apps.luma.elbondicervecerianomade.adapters.LocalitationsAdapter;
-import com.apps.luma.elbondicervecerianomade.adapters.ProductaAdapter;
+import com.apps.luma.elbondicervecerianomade.adapters.ProductsAdapter;
+import com.apps.luma.elbondicervecerianomade.adapters.ProductsDetailsAdapter;
 import com.apps.luma.elbondicervecerianomade.modelo.Producto;
-
-import static com.firebase.ui.storage.R.id.image;
 
 /**
  * Created by Jrepetto on 26/10/2017.
@@ -26,11 +24,13 @@ import static com.firebase.ui.storage.R.id.image;
 
 public class GridFragmentProducts extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private static Producto[] PRODUCTOS_BASE = null;
     public static GridFragmentProducts newInstance(int sectionNumber, Producto[] productos) {
         GridFragmentProducts fragment = new GridFragmentProducts();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
+        PRODUCTOS_BASE = productos;
         return fragment;
     }
 
@@ -42,18 +42,19 @@ public class GridFragmentProducts extends Fragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_products, container, false);
-        final GridView grid = (GridView) rootView.findViewById(R.id.gridviewProduct);
+        final View rootView = inflater.inflate(R.layout.fragment_products, container, false);
+        final GridView grid = (GridView) rootView.findViewById(R.id.gridviewProducts);
         setUpGridView(grid);
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                ProductsDetails a = new ProductsDetails();
                 Intent i = new Intent(parent.getContext(), ProductsDetails.class);
-                i.putExtra("id", position);
+                i.putExtra("nombre", PRODUCTOS_BASE[position].getNombre());
+                i.putExtra("descripcion", PRODUCTOS_BASE[position].getDescripcion());
+                i.putExtra("url", PRODUCTOS_BASE[position].getImgUrl());
+                i.putExtra("precio", PRODUCTOS_BASE[position].getPrecio());
                 Log.d("POSICIONES", String.valueOf(position));
-                i.putExtra("lista", String.valueOf(getGrid(grid)));
-                //startActivity(i);
+                startActivity(i);
             }
         });
         return rootView;
@@ -66,14 +67,12 @@ public class GridFragmentProducts extends Fragment {
                 grid.setAdapter(new LocalitationsAdapter(getActivity(), MenuActivity.getLocaciones()));
                 break;
             case 2:
-                grid.setAdapter(new ProductaAdapter(getActivity(), MenuActivity.getProductos()));
+                grid.setAdapter(new ProductsAdapter(getActivity(), MenuActivity.getProductos()));
+                break;
+            default:
                 break;
         }
 
-    }
-    private Object getGrid(GridView grid){
-
-        return grid.getAdapter();
     }
 
 }

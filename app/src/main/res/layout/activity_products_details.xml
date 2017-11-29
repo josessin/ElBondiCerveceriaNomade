@@ -1,29 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.apps.luma.elbondicervecerianomade.ProductsDetails">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.apps.luma.elbondicervecerianomade.MenuActivity">
 
-
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/tabs"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
 
+        <RelativeLayout
+            android:id="@+id/fondo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/background"
+            android:layout_alignParentTop="true">
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/beer_title"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_alignParentTop="true"
+                android:text="Titulo"
+                android:textSize="35dp"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/productDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:foregroundGravity="center"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bonditrasparente"
+                android:elevation="-30dp"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
     <TextView
-        android:id="@+id/descripcion"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtDescripcion"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:layout_below="@+id/titulo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_gravity="bottom"
+        android:background="@color/beer_title"
+        android:textColor="@color/tab_backgrounds"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_alignParentBottom="true"
+        android:text="Descripcion"
+        android:textSize="25dp"/>
+
 </RelativeLayout>

@@ -118,7 +118,7 @@ public class MenuActivity extends AppCompatActivity {
             new Information(this);
         } catch (JSONException e) {
             Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
-            new Information(this);
+            new Information(this);  
         }
     }
 
